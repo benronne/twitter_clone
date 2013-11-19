@@ -1,0 +1,22 @@
+%header
+	%h1 Twitter Clone Sign Up
+
+#content
+	%form{action: '/signup', method: 'POST'}
+		%ul
+			%li
+				%label First Name
+				%input{type: 'text', name: 'fname'}
+			%li
+				%label Last Name
+				%input{type: 'text', name: 'lname'}
+			%li
+				%label Email
+				%input{type: 'text', name: 'email'}
+			%li
+				%label Username
+				%input{type: 'text', name: 'username'}
+			%li
+				%label Password
+				%input{type: 'password', name: 'password'}
+		%input{type: 'submit', value: 'Sign Me Up!'}

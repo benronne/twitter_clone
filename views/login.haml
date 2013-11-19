@@ -1,0 +1,12 @@
+%header
+	%h1 Twitter Clone Login
+#content
+	%form{action: '/login', method: 'POST'}
+		%ul
+			%li
+				%label Username
+				%input{type: 'text', name: 'username'}
+			%li
+				%label Password
+				%input{type: 'password', name: 'password'}
+		%input{type: 'button', value: 'Let\'s Do It!'}
