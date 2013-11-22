@@ -8,9 +8,9 @@
 		#page_wrapper
 			#content_wrapper
 				-if flash[:notice]
-					=flash[:notice]
+					.notice=flash[:notice]
 				-if flash[:alert]
-					=flash[:alert]
+					.flash=flash[:alert]
 				%ul.nav
 					%li.nav
 						%a{href: '/'} Home

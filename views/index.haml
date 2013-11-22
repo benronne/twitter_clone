@@ -9,7 +9,7 @@
 	Recent Tweets
 
 -@tweets.each do |tweet|
-	%a{href: "/user/#{tweet.user.id}"}='@'+ tweet.user.username
+	%a.username{href: "/user/#{tweet.user.id}"}='@'+ tweet.user.username
 	%br
 	=tweet.tweet_text
 	%br
