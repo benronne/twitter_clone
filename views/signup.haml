@@ -3,20 +3,20 @@
 
 #content
 	%form{action: '/signup', method: 'POST'}
-		%ul
-			%li
-				%label First Name
-				%input{type: 'text', name: 'fname'}
-			%li
-				%label Last Name
-				%input{type: 'text', name: 'lname'}
-			%li
-				%label Email
-				%input{type: 'text', name: 'email'}
-			%li
-				%label Username
-				%input{type: 'text', name: 'username'}
-			%li
-				%label Password
-				%input{type: 'password', name: 'password'}
+		%ul.vert
+			%li.vert
+				%label{for: 'fname'} First Name
+				%input{type: 'text', name: '[user]fname'}
+			%li.vert
+				%label{for: 'lname'} Last Name
+				%input{type: 'text', name: '[user]lname'}
+			%li.vert
+				%label{for: 'email'} Email
+				%input{type: 'text', name: '[user]email'}
+			%li.vert
+				%label{for: 'username'} Username
+				%input{type: 'text', name: '[user]username'}
+			%li.vert
+				%label{for: 'password'} Password
+				%input{type: 'password', name: '[user]password'}
 		%input{type: 'submit', value: 'Sign Me Up!'}

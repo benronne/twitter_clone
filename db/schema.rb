@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131119011406) do
+ActiveRecord::Schema.define(version: 20131121033801) do
 
   create_table "tweets", force: true do |t|
     t.string   "tweet_text"
     t.datetime "tweet_time"
-    t.integer  "userid"
+    t.integer  "user_id"
   end
 
   create_table "users", force: true do |t|
@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(version: 20131119011406) do
     t.string "lname"
     t.string "email"
     t.string "username"
-    t.string "password"
+    t.string "password_hash"
+    t.string "password_salt"
   end
 
 end

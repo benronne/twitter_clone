@@ -1,11 +1,22 @@
-%header
-	%h1 Twitter Clone Home
+%h1 
+	-if current_user
+		Welcome to the Twitter Clone,
+		=current_user.full_name
+	-else
+		Welcome to the Twitter Clone
 
-#content
-	%h2 This is a Twitter clone
-	%p
-		Please 
-		%a{href: '/login'} click here to login.
-	%p
-		If you don't have an account,
-		%a{href: '/signup'} click here to register.
+%h2
+	Recent Tweets
+
+-@tweets.each do |tweet|
+	%a{href: "/user/#{tweet.user.id}"}='@'+ tweet.user.username
+	%br
+	=tweet.tweet_text
+	%br
+	=tweet.tweet_time.strftime('%e %b %Y %H:%m:%S%p')
+	%br
+	%br
+
+
+
+

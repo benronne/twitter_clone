@@ -3,9 +3,26 @@
 %html
 	%head
 		%title Twitter Clone
-		%link{href:"", rel: "stylesheet", type: "text/css"}
 		%link{rel: "stylesheet", href: "/stylesheet.css", type: "text/css"}
 	%body
 		#page_wrapper
 			#content_wrapper
+				-if flash[:notice]
+					=flash[:notice]
+				-if flash[:alert]
+					=flash[:alert]
+				%ul.nav
+					%li.nav
+						%a{href: '/'} Home
+					-if current_user
+						%li.nav
+							%a{href: '/signout'} Sign Out
+						%li.nav
+							%a{href: "/user/#{current_user.id}"} Your Profile
+					-else
+						%li.nav
+							%a{href: '/login'} Login
+						%li.nav
+							%a{href: '/signup'} Sign Up
+					
 				=yield

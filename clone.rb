@@ -5,43 +5,91 @@ require 'haml'
 require 'sinatra/activerecord'
 require 'rake'
 require 'chronic'
-
+require 'bcrypt'
 require 'rack-flash'
 
-set :database, 'sqlite3:///twitter_clone_db_v0.sqlite3'
+configure(:development) { set :database, 'sqlite3:///twitter_clone_db_v0.sqlite3' }
 
 require './models'
 
+enable :sessions
+use Rack::Flash, :sweep => true
+set :sessions => true
+
+
+helpers do
+	def current_user
+		if session[:user_id]
+			User.find(session[:user_id])
+		else
+			nil
+		end
+	end
+end
+
 get '/' do
+	@users = User.all
+	@tweets = Tweet.all
 	haml :index
 end
+
 
 get '/login' do
 	haml :login
 end
 
+post '/login' do
+	@user = User.authenticate(params['user']['username'], params['user']['password'])
+	if @user
+		session[:user_id] = @user.id
+		flash[:notice] = "You've signed in successfully!"
+		redirect '/'
+	else
+		flash[:notice] = "There was a problem signing you in."
+		redirect '/login'
+	end
+end
+
+
 get '/signup' do
 	haml :signup
 end
 
-get '/tweet' do
-	haml :tweet
-end
-
-post '/tweet' do
-	@tweet = Tweets.new
-	@tweet.tweet_text = params[:tweet_text]
-	@tweet.tweet_time = Time.now
-	#@tweet.userid 
-	@tweet.save
-end
 
 post '/signup' do
-	@user = User.new
-	@user.fname = params[:fname]
-	@user.lname = params[:lname]
-	@user.email = params[:email]
-	@user.username = params[:username]
-	@user.password = params[:password]
-	@user.save
+	@user = User.new(params['user'])
+	if @user.save
+		session[:user_id] = @user.id
+		flash[:notice] = "You have signed up successfully!"
+		redirect '/'
+	else
+		flash[:alert] = "There was a problem creating your account."
+		redirect '/signup'
+	end
+end
+
+
+get '/user/:id' do
+	@user = User.find(params[:id])
+	haml :profile
+end
+
+
+post '/newtweet' do
+	if current_user
+		@tweet = Tweet.new(tweet_text: params['tweet_text'], tweet_time: Time.now, user_id: current_user.id)
+		if @tweet.save
+			flash[:notice] = "Your tweet was posted!"
+		else
+			flash[:alert] = "There was a problem posting your tweet."
+		end
+			redirect "/user/#{current_user.id}"
+	end
+end	
+
+
+get '/signout' do
+	session[:user_id] = nil
+	flash[:notice] = "You've been signed out."
+	redirect '/'
 end
