@@ -20,8 +20,5 @@
 
 
 -@user.tweets.each do |tweet|	
-	=tweet.tweet_text
-	%br
-	=tweet.tweet_time.strftime('%e %b %Y %H:%m:%S%p')
-	%br
-	%br
+	.tweet_text=tweet.tweet_text
+	.time=tweet.tweet_time.strftime('%e %b %Y %H:%m:%S%p')
