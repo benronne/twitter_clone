@@ -1,24 +1,26 @@
 -if @user
-	%header
+	#header
 		%h1
 			=@user.full_name + "'s"
 			Profile Page
-		%h2
-			=@user.full_name + "'s"
-			Tweets
-	
+		
+#content_wrapper
+	%h2
+		=@user.username + "'s"
+		Tweets
 
--if @user == current_user
-	%form{action: '/newtweet', method: 'POST'}
-		%label{for: 'tweet_text'} Enter Your Text
-		%br
-		%textarea{name: 'tweet_text'}
-		%br
-		%input{type: 'submit', value: 'Post It!'}
-		%br
-		%br
+	-if @user == current_user
+		%form{action: '/newtweet', method: 'POST'}
+			%label{for: 'tweet_text'} Enter Your Text
+			%br
+			%textarea{name: 'tweet_text'}
+			%br
+			%input{type: 'submit', value: 'Post It!'}
+			%br
+			%br
 
 
--@user.tweets.each do |tweet|	
-	.tweet_text=tweet.tweet_text
-	.time=tweet.tweet_time.strftime('%e %b %Y %H:%m:%S%p')
+	-@user.tweets.each do |tweet|
+		.tweets	
+			.profile_tweet_text=tweet.tweet_text
+			.profile_time=tweet.tweet_time.strftime('%e %b %Y %H:%m:%S%p')

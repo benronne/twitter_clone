@@ -6,11 +6,7 @@
 		%link{rel: "stylesheet", href: "/stylesheet.css", type: "text/css"}
 	%body
 		#page_wrapper
-			#content_wrapper
-				-if flash[:notice]
-					.notice=flash[:notice]
-				-if flash[:alert]
-					.flash=flash[:alert]
+			#navigation
 				%ul.nav
 					%li.nav
 						%a{href: '/'} Home
@@ -24,5 +20,9 @@
 							%a{href: '/login'} Login
 						%li.nav
 							%a{href: '/signup'} Sign Up
-					
-				=yield
+					-if flash[:notice]
+						.notice=flash[:notice]
+					-if flash[:alert]
+						.flash=flash[:alert]
+		
+		=yield

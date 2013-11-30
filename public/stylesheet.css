@@ -54,7 +54,7 @@ body {
 	color: #000000;
 }
 
-#content_wrapper {
+#navigation {
 	width: 960px;
 	background: #ffffff;
 	margin: 10px auto;
@@ -63,26 +63,13 @@ body {
 	box-shadow: 5px 5px 5px #666666;
 }
 
-h1 {
-	font-size: 36px;
-	font-weight: bold;
-	margin: 20px 0px 20px 0px;
-}
-
-h2 {
-	font-size: 24px;
-	font-weight: bold;
-	color: #666666;
-	margin: 10px 0px 20px 0px;
-}
-
 ul.nav {
 	list-style-type: none;
 }
 
 li.nav {
 	display: inline;
-	margin: 10px 30px 10px 0px;
+	margin: 10px 60px 10px 0px;
 }
 
 ul.vert {
@@ -106,13 +93,68 @@ li.vert {
 	font-weight: bold;
 }
 
-form input.submit {
+#header {
+	width: 960px;
+	background: #ffffff;
+	margin: 10px auto;
+	padding: 30px;
+	border-radius: 25px;
+	box-shadow: 5px 5px 5px #666666;
+}
+
+h1 {
+	font-size: 42px;
+	font-weight: bold;
 	margin: 10px 0px;
+}
+
+h2 {
+	font-size: 36px;
+	font-weight: bold;
+	color: #666666;
+	margin: 10px 0px 20px 0px;
+}
+
+#content_wrapper {
+	width: 960px;
+	background: #ffffff;
+	margin: 10px auto;
+	padding: 30px;
+	border-radius: 25px;
+	box-shadow: 5px 5px 5px #666666;
+}
+
+label {
+	width: 100px;
+	margin: 5px;
+	display: inline-block;
+}
+
+input {
+	width: 200px;
+	margin: 5px;
+}
+
+form input.submit {
+	width: 100px;
+	margin: 5px 5px 20px 10px;
 }
 
 textarea {
 	width: 600px;
 	height: 50px;
+}
+
+.tweets {
+	margin: 20px 0px;
+	font-size: 14px;
+	border-top: 2px solid #666666;
+
+}
+
+.tweet_user {
+	margin: 15px 0px 0px 0px;
+	font-size: 18px;
 }
 
 .tweet_text {
@@ -122,12 +164,21 @@ textarea {
 }
 
 .time {
-	width: 600px;
-	margin: 5px 0px 25px 0px;
-	padding: 0px 0px 25px 0px;
+	margin: 5px 0px;
 	color: #666666;
 	font-size: 12px;
-	border-bottom: 2px solid #666666;
+}
+
+.profile_tweet_text {
+	margin: 15px 0px;
+	color: #000000;
+	font-size: 14px;
+}
+
+.profile_time {
+	margin: 5px 0px;
+	color: #666666;
+	font-size: 12px;
 }
 
 a {

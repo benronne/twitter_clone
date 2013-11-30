@@ -1,18 +1,23 @@
-%h1 
-	-if current_user
-		Welcome to the Twitter Clone,
-		=current_user.full_name
-	-else
-		Welcome to the Twitter Clone
 
-%h2
-	Recent Tweets
+#header
+	%h1 
+		-if current_user
+			Welcome to the Twitter Clone,
+			=current_user.fname
+		-else
+			Welcome to the Twitter Clone
+
+#content_wrapper
+	%h2
+		Recent Tweets
 
 
--@tweets.each do |tweet|
-	%a.username{href: "/user/#{tweet.user.id}"}='@'+ tweet.user.username
-	.tweet_text=tweet.tweet_text
-	.time=tweet.tweet_time.strftime('%e %b %Y %H:%m:%S%p')
+	-@tweets.each do |tweet|
+		.tweets
+			.tweet_user
+				%a.username{href: "/user/#{tweet.user.id}"}='@'+ tweet.user.username
+			.tweet_text=tweet.tweet_text
+			.time=tweet.tweet_time.strftime('%e %b %Y %H:%m:%S%p')
 
 
 

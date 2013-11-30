@@ -45,8 +45,8 @@ post '/login' do
 		flash[:notice] = "You've signed in successfully!"
 		redirect '/'
 	else
-		flash[:notice] = "There was a problem signing you in."
-		redirect '/login'
+		flash[:alert] = "There was a problem signing you in."
+		redirect '/signup'
 	end
 end
 
