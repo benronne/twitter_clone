@@ -43,7 +43,7 @@ post '/login' do
 	if @user
 		session[:user_id] = @user.id
 		flash[:notice] = "You've signed in successfully!"
-		redirect '/'
+		redirect "/user/#{current_user.id}"
 	else
 		flash[:alert] = "There was a problem signing you in."
 		redirect '/signup'
