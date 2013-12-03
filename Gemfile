@@ -10,4 +10,11 @@ gem 'rake'
 gem 'chronic'
 gem 'rack-flash3', :git => "git://github.com/treeder/rack-flash.git"
 gem 'bcrypt-ruby'
-gem 'sqlite3'
+
+group :development do
+	gem 'sqlite3'
+end
+
+group :production do
+	gem 'pg'
+end
